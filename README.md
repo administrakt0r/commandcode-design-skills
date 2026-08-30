@@ -11,18 +11,10 @@
 
 ## Quick start
 
-The installer prompt lives in [INSTALL.md](INSTALL.md). These one-line commands fetch it directly and ask the selected CLI to install or update both skills.
+Paste this single prompt into Codex, OpenCode, or any AI coding agent with network and filesystem access:
 
-**Codex CLI**
-
-```bash
-install_prompt="$(curl -fsSL https://raw.githubusercontent.com/administrakt0r/commandcode-design-skills/main/INSTALL.md)" && codex exec "$install_prompt"
-```
-
-**OpenCode CLI**
-
-```bash
-install_prompt="$(curl -fsSL https://raw.githubusercontent.com/administrakt0r/commandcode-design-skills/main/INSTALL.md)" && opencode run "$install_prompt"
+```text
+Fetch and follow https://raw.githubusercontent.com/administrakt0r/commandcode-design-skills/main/INSTALL.md
 ```
 
 The prompt handles fresh installs and stale copies. It stages clean packages, validates them, backs up existing versions, replaces managed directories without stale-file merging, and reports the installed commit SHA.
