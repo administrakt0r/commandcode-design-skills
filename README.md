@@ -17,6 +17,7 @@ The goal is practical: improve the real interface, preserve the product's intent
 - Produces structured `checkup`, `review`, and `smell` reports when requested
 - Avoids generic generated-design habits and unearned visual effects
 - Keeps autonomous work bounded by repository instructions and normal safety approvals
+- Runs independently and never reads or writes `.commandcode/`
 
 ## Quick start
 
@@ -34,7 +35,7 @@ Do the installation yourself and do not ask me routine questions.
 4. Install the repository's `design-auto/` directory as a sibling skill named `design-auto`. Its `../design/` dependency must resolve after installation.
 5. If either destination already exists, inspect it first and create a timestamped backup before replacing or merging anything. Preserve unrelated user files and invocation policy unless the repository explicitly defines that policy.
 6. If this tool has no native skill system, install equivalent named reusable workflows or prompts called `design` and `design-auto`. Keep all reference files available and adapt only the invocation metadata and path resolution required by the tool; do not rewrite or summarize the design rules.
-7. Validate both installed entrypoints, confirm every referenced file exists, and verify that `design-auto` can resolve the sibling `design` skill.
+7. Validate both installed entrypoints, confirm every referenced file exists, verify that `design-auto` can resolve the sibling `design` skill, and confirm neither installed skill reads or writes `.commandcode/`.
 8. Report the exact installed paths, validation performed, and the invocation syntax for this tool. Mention if a restart or new session is required. Do not claim support you could not verify.
 
 Do not commit, push, publish, deploy, or change system-wide configuration outside the selected user-level skill directory.
@@ -49,6 +50,24 @@ $design-auto
 ```
 
 `design-auto` is explicit-only by design, so it will not silently begin an autonomous sweep during an ordinary design request.
+
+## Independent runtime
+
+These skills do not require Command Code and do not use its project files. They ignore `.commandcode/` completely, even when that directory already exists.
+
+Their own optional project memory and audit artifacts live only under `.design-agent/`:
+
+```text
+.design-agent/
+├── brief.md
+├── taste.md
+├── checkup-report.md
+├── checkup-report.html
+├── review-report.md
+├── review-report.html
+├── smell-report.md
+└── smell-report.html
+```
 
 ## What `design` can do
 
@@ -90,6 +109,6 @@ The diagnostic report HTML template is only for generated audit reports. It is n
 
 If an agent cannot install skills, use [PROMPT.md](PROMPT.md) as a turn-level instruction and keep it beside `SKILL.md` and `references/`. The fallback contains no machine-specific absolute path.
 
-## Publishing note
+## Repository
 
-This directory contains the publishable files but was not initialized, committed, pushed, or published by the preparation process. Add the public repository URL to the Quick start prompt after creating the GitHub repository.
+Published at [administrakt0r/commandcode-design-skills](https://github.com/administrakt0r/commandcode-design-skills).

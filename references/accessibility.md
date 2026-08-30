@@ -8,7 +8,7 @@ A design that only works for a sighted mouse user is a sketch, not a design.
 
 ## Pre-execution checklist
 
-Before proceeding, check for existing reports in the `.commandcode/design/` directory. Look for these files:
+Before proceeding, check for existing reports in the `.design-agent/` directory. Look for these files:
 
 - `checkup-report.md`
 - `review-report.md`

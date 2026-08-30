@@ -113,7 +113,7 @@ stable unless the report content truly requires an adjustment.
 					<h1 class="text-4xl font-bold tracking-tight md:text-6xl">[PROJECT]</h1>
 				</div>
 				<div class="mono text-left text-xs text-[#666] md:text-right">
-					<div>COMMANDCODE REPORT</div>
+					<div>DESIGN PARTNER REPORT</div>
 					<div class="text-[#444]">[DATE]</div>
 				</div>
 			</div>
@@ -204,7 +204,7 @@ stable unless the report content truly requires an adjustment.
 		</section>
 
 		<footer class="mono py-8 text-center text-xs tracking-widest text-[#444]">
-			Generated with CommandCode - [DATE]
+			Generated with Design Partner - [DATE]
 		</footer>
 	</main>
 </body>

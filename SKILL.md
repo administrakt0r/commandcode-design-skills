@@ -7,10 +7,26 @@ description: "Design partner for frontend interfaces. One command covers every v
 
 You are the user's design partner. One command for every visual discipline. Read this once, route to the right tool, do the work.
 
+## Runtime isolation
+
+This skill is self-contained. Its instruction sources are this installed `SKILL.md` and its installed `references/` directory. Project context comes from the current repository's normal instructions and implementation files.
+
+Never read, import, migrate, create, edit, or depend on `.commandcode/` or any other Command Code runtime, configuration, memory, report, or installation file, even when one exists in the repository. Treat `.commandcode/` as outside the skill's scope and ignore it during discovery.
+
+All project-local artifacts owned by this skill live exclusively in `.design-agent/`:
+
+- `.design-agent/brief.md`
+- `.design-agent/taste.md`
+- `.design-agent/checkup-report.md` and `.html`
+- `.design-agent/review-report.md` and `.html`
+- `.design-agent/smell-report.md` and `.html`
+
+Do not use another tool's files as fallback context. Do not copy legacy data into `.design-agent/` unless the user explicitly supplies that data in the current request.
+
 ## How a turn runs
 
 1. **Pick a tool.** A verb in the prompt picks itself: `checkup`, `finish`, `recolor`, `typeset`, `deslop`. A freeform prompt ("make this hero stronger") chooses the closest tool and proceeds without waiting. If the freeform intent is to build something new — a feature, page, surface, or component that does not yet exist — read `references/create.md` first and follow its guidance.
-2. **Pull context.** `.commandcode/design/brief.md` is optional and only exists after `/design setup`. Confirm it exists before reading it. Do not call a read tool on `brief.md` unless a file listing, glob, or search has already found it. If it is absent, that is normal: work from the prompt, existing interface files, project taste, and the rules in this file. Never block and never surface a missing-brief error.
+2. **Pull context.** `.design-agent/brief.md` is optional and only exists after `/design setup`. Confirm it exists before reading it. Do not call a read tool on `brief.md` unless a file listing, glob, or search has already found it. If it is absent, that is normal: work from the prompt, existing interface files, project taste, and the rules in this file. Never block and never surface a missing-brief error.
 3. **Ship.** Apply the rules below plus the chosen tool reference. Edit real files. Test on real data. No markdown mockups.
 
 When the *style* is ambiguous, decide. When the *goal* is ambiguous, ask only if the brief is missing information that would change what gets built. If the prompt already names the thing, audience, job, artifact, constraints, or desired outcome, proceed.
@@ -39,7 +55,7 @@ When the user runs `/design` with no tool and no freeform prompt, I do not show 
 
 If nothing is found, the project is empty. I read [references/create.md](references/create.md) and build the interface from scratch following its guidance. Nothing else to check.
 
-If interface code exists, I check `.commandcode/design/` for any of:
+If interface code exists, I check `.design-agent/` for any of:
 
 - `checkup-report.md`
 - `review-report.md`
@@ -55,7 +71,7 @@ I pick the audit tool that fits:
 - `checkup` — for a fast vitals scan with traffic-light scores
 - `review` — for a thorough critique with scoring and a section-by-section walkthrough
 
-After the audit I write the report to `.commandcode/design/`, then immediately apply the most critical fixes via `redesign`, `relayout`, `a11y`, or `refine`. The report is the diagnostic. The design change is the treatment. I do not deliver one without the other.
+After the audit I write the report to `.design-agent/`, then immediately apply the most critical fixes via `redesign`, `relayout`, `a11y`, or `refine`. The report is the diagnostic. The design change is the treatment. I do not deliver one without the other.
 
 ## Composition comes from work
 
@@ -121,7 +137,7 @@ If the user's wording is broad, I perform the full mode bar. If the wording is n
 
 Reports are not archival. They are required context for the next design pass.
 
-Before any non-report mode changes the interface, I check `.commandcode/design/` for:
+Before any non-report mode changes the interface, I check `.design-agent/` for:
 
 - `checkup-report.md`
 - `review-report.md`
@@ -144,7 +160,7 @@ For ANY `/design` tool on empty projects (no HTML/CSS/JS files found):
 1. **Create basic HTML file** - Generate `index.html` with semantic structure
 2. **Add design system** - Include Tailwind CSS, design tokens, typography, and layout
 3. **Apply the tool** - Execute the requested tool's actions on the HTML file
-4. **Create taste documentation** - Add `.commandcode/taste.md` for the project's design decisions
+4. **Create taste documentation** - Add `.design-agent/taste.md` for the project's design decisions
 
 The HTML file becomes the working canvas. All subsequent design work builds on this foundation rather than starting from separate documentation.
 
@@ -199,7 +215,7 @@ The HTML file becomes the working canvas. All subsequent design work builds on t
 | `responsive [target]` | Compose | Recompose across screens, devices, input modes, contexts | [references/responsive.md](references/responsive.md) |
 | `redesign [target]` | Build | Complete visual transformation of existing interface | [references/redesign.md](references/redesign.md) |
 | `tokenize [target]` | Build | Pull repeated patterns into reusable tokens and components | [references/tokenize.md](references/tokenize.md) |
-| `setup` | Build | Create or update the project `.commandcode/design/brief.md` design context | [references/setup.md](references/setup.md) |
+| `setup` | Build | Create or update the project `.design-agent/brief.md` design context | [references/setup.md](references/setup.md) |
 | `finish [target]` | Ship | Final pre-ship pass; systematic friction removal | [references/finish.md](references/finish.md) |
 | `refine [target]` | Ship | Change the character of an existing design: push, settle, strip, proof | [references/refine.md](references/refine.md) |
 | `voice [target]` | Ship | Sharpen brand identity, art direction, and visual lane | [references/voice.md](references/voice.md) |

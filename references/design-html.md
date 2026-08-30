@@ -72,7 +72,7 @@ Every major section uses:
             <h1 class="text-5xl md:text-6xl font-bold tracking-tighter">[PROJECT_NAME]</h1>
         </div>
         <div class="text-right">
-            <div class="mono text-sm text-[#666]">COMMANDCODE PREVIEW</div>
+            <div class="mono text-sm text-[#666]">DESIGN PARTNER PREVIEW</div>
             <div class="text-xs text-[#444]">[CURRENT_DATE]</div>
         </div>
     </div>

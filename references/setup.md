@@ -1,6 +1,6 @@
 # Setup
 
-Setup gives the project one design memory. I use it when the repo needs a `.commandcode/design/brief.md` that future design work can trust.
+Setup gives the project one design memory. I use it when the repo needs a `.design-agent/brief.md` that future design work can trust.
 
 This is not a report. It is not a research artifact. It is the working design constitution for the repo.
 
@@ -22,17 +22,17 @@ I document the allowed composition lanes so future design work does not collapse
 
 ## Applied Setup Bar
 
-`/design setup` creates or updates the actual `.commandcode/design/brief.md`. It is not a conversational setup checklist.
+`/design setup` creates or updates the actual `.design-agent/brief.md`. It is not a conversational setup checklist.
 
-At minimum, I read the available project files, extract durable design facts, write `.commandcode/design/brief.md`, and make future design commands more specific than they were before.
+At minimum, I read the available project files, extract durable design facts, write `.design-agent/brief.md`, and make future design commands more specific than they were before.
 
-If I only ask questions or describe what `.commandcode/design/brief.md` should contain, setup failed.
+If I only ask questions or describe what `.design-agent/brief.md` should contain, setup failed.
 
 ---
 
 ## What I Create
 
-I create or update one file at `.commandcode/design/brief.md`.
+I create or update one file at `.design-agent/brief.md`.
 
 That file carries the durable answers:
 
@@ -83,9 +83,9 @@ I make it concise enough to stay useful.
 
 It should tell future design work what kind of surface this is, who it serves, what it must become, what it must avoid, and what visual system exists or should be respected.
 
-If an old `.commandcode/design/brief.md` exists, I show the intended change before overwriting. I never silently replace the project's design memory.
+If an old `.design-agent/brief.md` exists, I show the intended change before overwriting. I never silently replace the project's design memory.
 
-If older context files exist at the project root (any `.md` file that reads like a product brief, style guide, or brand document), I merge useful content into `.commandcode/design/brief.md` and ask before deleting anything.
+If older context files exist at the project root (any `.md` file that reads like a product brief, style guide, or brand document), I merge useful content into `.design-agent/brief.md` and ask before deleting anything.
 
 ---
 
@@ -105,7 +105,7 @@ If older context files exist at the project root (any `.md` file that reads like
 
 ## How I Know Setup Is Done
 
-- `brief.md` exists at `.commandcode/design/brief.md`
+- `brief.md` exists at `.design-agent/brief.md`
 - `brief.md` includes facts found in the repo, not just generic design advice
 - Register is explicit
 - Users, purpose, voice, and anti-references are clear

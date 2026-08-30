@@ -123,8 +123,8 @@ Recommendations use the severity scale, evidence bar, findings table, considered
 
 Review always produces two report artifacts:
 
-- `.commandcode/design/review-report.md`
-- `.commandcode/design/review-report.html`
+- `.design-agent/review-report.md`
+- `.design-agent/review-report.html`
 
 **Important Rule for Generating HTML Report:**
 
@@ -159,6 +159,6 @@ These are the only report artifacts review creates.
 - `review-report.md` and `review-report.html` both exist
 
 STRICT RULE — NEVER BREAK THIS
-Always create .commandcode/design/review-report.md and
-.commandcode/design/review-report.html. Do not create any other report,
+Always create .design-agent/review-report.md and
+.design-agent/review-report.html. Do not create any other report,
 summary, analysis file, or extra documentation.

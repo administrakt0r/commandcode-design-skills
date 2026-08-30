@@ -122,8 +122,8 @@ Prescriptions carry a severity, a `path/to/file:line` location, and a concrete r
 
 Checkup always produces two report artifacts:
 
-- `.commandcode/design/checkup-report.md`
-- `.commandcode/design/checkup-report.html`
+- `.design-agent/checkup-report.md`
+- `.design-agent/checkup-report.html`
 
 **Important Rule for Generating HTML Report:**
 
@@ -157,6 +157,6 @@ These are the only report artifacts checkup creates.
 - `checkup-report.md` and `checkup-report.html` both exist
 
 STRICT RULE — NEVER BREAK THIS
-Always create .commandcode/design/checkup-report.md and
-.commandcode/design/checkup-report.html. Do not create any other report,
+Always create .design-agent/checkup-report.md and
+.design-agent/checkup-report.html. Do not create any other report,
 summary, analysis file, or extra documentation.

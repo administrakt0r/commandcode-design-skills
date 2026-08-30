@@ -16,6 +16,12 @@ This skill orchestrates the globally installed `design` skill. Before acting:
 3. Load only the reference files required by the current mode from `../design/references/`.
 4. If the sibling skill is unavailable, search the active Codex skills directory for `design/SKILL.md`. If it still cannot be found, stop and report that blocker; do not recreate the design rules from memory.
 
+## Runtime isolation
+
+Use only the installed `design` skill, its installed references, the current repository's normal instructions and implementation, and artifacts created by these skills under `.design-agent/`.
+
+Never inspect, read, import, migrate, create, edit, or rely on `.commandcode/` or any Command Code runtime, configuration, memory, report, or installation file. Ignore that directory even when it exists. Do not treat its briefs or reports as audit evidence, and do not copy them into `.design-agent/`.
+
 ## Communication contract
 
 Do not ask the user to choose tasks, colors, fonts, layouts, priorities, or modes. Infer ordinary decisions from repository evidence. Do not send routine progress updates. If the runtime requires an initial tool-use update, send one short sentence and then work silently until the final result.
@@ -26,7 +32,7 @@ Never bypass a required approval, credential boundary, destructive-action safegu
 
 ### 1. Establish the boundary
 
-Read repository instructions, README and package metadata, routes, entry points, components, styles, assets, tests, build scripts, existing design brief, and existing design reports. Inspect version-control status before editing and preserve unrelated work. Determine the product register, dominant work pattern, primary user flow, and renderable target.
+Read repository instructions, README and package metadata, routes, entry points, components, styles, assets, tests, build scripts, and this skill's existing `.design-agent/` brief and reports when present. Exclude `.commandcode/` from discovery. Inspect version-control status before editing and preserve unrelated work. Determine the product register, dominant work pattern, primary user flow, and renderable target.
 
 If the repository has no interface and no evidence identifying a target, goal, audience, and domain artifact, do not invent a product. Finish with a concise blocker. If those facts are discoverable, use the `create` mode.
 

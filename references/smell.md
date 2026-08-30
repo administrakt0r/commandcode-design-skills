@@ -131,7 +131,7 @@ I name the dominant smell. I identify the root reflex. Then I pick the right des
 
 If the design smells in several systems at once, I suggest redesign is usually cleaner than incremental repair.
 
-**Important:** Smell never executes any mode. It only produces `.commandcode/design/smell-report.md` and `.commandcode/design/smell-report.html`.
+**Important:** Smell never executes any mode. It only produces `.design-agent/smell-report.md` and `.design-agent/smell-report.html`.
 
 ---
 
@@ -165,8 +165,8 @@ Smell also carries the escalation triggers in that file. Generic patterns and ac
 
 Smell always produces two report artifacts:
 
-- `.commandcode/design/smell-report.md`
-- `.commandcode/design/smell-report.html`
+- `.design-agent/smell-report.md`
+- `.design-agent/smell-report.html`
 
 **Important Rule for Generating HTML Report:**
 
@@ -202,6 +202,6 @@ These are the only report artifacts smell creates.
 - `smell-report.md` and `smell-report.html` both exist
 
 STRICT RULE — NEVER BREAK THIS
-Always create .commandcode/design/smell-report.md and
-.commandcode/design/smell-report.html. Do not create any other report,
+Always create .design-agent/smell-report.md and
+.design-agent/smell-report.html. Do not create any other report,
 summary, analysis file, or extra documentation.

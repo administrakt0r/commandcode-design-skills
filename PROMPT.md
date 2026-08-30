@@ -16,6 +16,10 @@ At the beginning of every design task:
 4. Load only the referenced files needed for the selected mode from `BUNDLE_PATH/references/`.
 5. Never treat the report HTML template as inspiration for product UI. It is only for diagnostic report artifacts.
 
+### Runtime isolation
+
+This bundle is independent. Never inspect, read, import, migrate, create, edit, or rely on `.commandcode/` or any Command Code runtime, configuration, memory, report, or installation file. Ignore that directory even when it exists. Use only this bundle's `SKILL.md` and `references/`, the current repository's normal instructions and implementation, and project artifacts owned by this bundle under `.design-agent/`.
+
 The reference directory contains the authoritative supporting files:
 
 - `accessibility.md`: keyboard, focus, semantics, forms, live regions, names, hit areas, zoom, reflow, motion access
@@ -34,7 +38,7 @@ The reference directory contains the authoritative supporting files:
 - `relayout.md`: structural recomposition without changing product identity
 - `responsive.md`: viewport, input mode, mobile, safe areas, RTL, tables, iOS input zoom
 - `review.md`: honest five-lens audit and `/50` scoring
-- `setup.md`: durable project design constitution at `.commandcode/design/brief.md`
+- `setup.md`: durable project design constitution at `.design-agent/brief.md`
 - `severity.md`: finding severity, escalation triggers, evidence, tables, verdicts
 - `shadow.md`: elevation, lighting, depth, dark mode, performance
 - `smell.md`: generated-design smell catalog and `/10` inverted scoring
@@ -78,7 +82,7 @@ If no mode and no prompt are supplied, follow this routing:
 
 1. Determine whether interface code exists by checking for `.html`, `.css`, `.js`, `.ts`, `.jsx`, `.tsx`, `.vue`, `.svelte`, UI-framework dependencies in `package.json`, or component files under `src/`, `app/`, or `pages/`.
 2. If no interface exists, load `create.md` and build a real interface from scratch.
-3. If interface code exists, check `.commandcode/design/` for `checkup-report.md`, `review-report.md`, and `smell-report.md`.
+3. If interface code exists, check `.design-agent/` for `checkup-report.md`, `review-report.md`, and `smell-report.md`.
 4. If reports exist, read their Markdown versions, identify the highest-severity actionable findings, and choose the mode that fixes them.
 5. If no reports exist, run an appropriate audit, write its report, then immediately apply the most critical fixes in the same pass.
 
@@ -90,7 +94,7 @@ Read the repository before making design decisions:
 - README and package metadata
 - routes and entry points
 - existing components, styles, tokens, themes, assets, logos, favicons
-- current `.commandcode/design/brief.md`, but only after confirming it exists
+- current `.design-agent/brief.md`, but only after confirming it exists
 - existing diagnostic Markdown reports, when present
 - relevant tests and build scripts
 
@@ -183,11 +187,11 @@ Consolidate systemic root causes into one finding with all relevant locations. I
 
 Escalation triggers are HIGH immediately: unnamed operable control; invisible focus; mouse path without keyboard path; motion that ignores reduced motion; content inaccessible at 320px or 200% zoom; insufficient text/background contrast; meaning conveyed only by hue; irreversible action without confirmation/undo/separation; placeholder-only label.
 
-`smell` detects generated-design reflexes and scores inverted `/10`: 0 tells = `10/10 CLEAN`; 1–2 = FAINT; 3–4 = PRESENT; 5–6 = STRONG; 7+ = IDENTITY FAILURE. It writes only `.commandcode/design/smell-report.md` and `.commandcode/design/smell-report.html`.
+`smell` detects generated-design reflexes and scores inverted `/10`: 0 tells = `10/10 CLEAN`; 1–2 = FAINT; 3–4 = PRESENT; 5–6 = STRONG; 7+ = IDENTITY FAILURE. It writes only `.design-agent/smell-report.md` and `.design-agent/smell-report.html`.
 
-`checkup` checks intentionality, readability, usability, responsiveness, speed, and accessibility. Score `/60`, six vitals at 10 points each: Healthy 10, Watch 5, Critical 0. It writes only `.commandcode/design/checkup-report.md` and `.commandcode/design/checkup-report.html`.
+`checkup` checks intentionality, readability, usability, responsiveness, speed, and accessibility. Score `/60`, six vitals at 10 points each: Healthy 10, Watch 5, Critical 0. It writes only `.design-agent/checkup-report.md` and `.design-agent/checkup-report.html`.
 
-`review` evaluates first impression, hierarchy, color voice, type voice, and interaction feel. Score `/50`, five lenses at 10 points each. It writes only `.commandcode/design/review-report.md` and `.commandcode/design/review-report.html`.
+`review` evaluates first impression, hierarchy, color voice, type voice, and interaction feel. Score `/50`, five lenses at 10 points each. It writes only `.design-agent/review-report.md` and `.design-agent/review-report.html`.
 
 For HTML reports, read `report-html.md` and preserve its diagnostic layout: dark near-black canvas, responsive max-width container, header metadata, large score/verdict block, TL;DR, score table, structured signals, priority issues, and footer. Use Tailwind CDN unless an offline report is explicitly requested. Never use this diagnostic aesthetic for product UI.
 
@@ -197,7 +201,7 @@ Build a usable interface, not a screenshot. If the project is empty, create `ind
 
 ### `setup`
 
-Read the repository first, then create or update exactly `.commandcode/design/brief.md` with register, users/context, purpose, voice, anti-references, principles, accessibility expectations, visual foundation, and component rules. If an existing brief would be overwritten, show the intended change and ask before replacing it. Merge useful facts from older product/style documents without silently deleting them. Do not create a report.
+Read the repository first, then create or update exactly `.design-agent/brief.md` with register, users/context, purpose, voice, anti-references, principles, accessibility expectations, visual foundation, and component rules. If an existing brief would be overwritten, show the intended change and ask before replacing it. Merge useful facts from older product/style documents without silently deleting them. Do not create a report.
 
 ### `deslop`
 
@@ -267,7 +271,7 @@ After changes:
 6. Stop any dev server or background process started for verification.
 7. Compare every final claim against an actual file diff and observed UI. Say `inspected`, `implemented`, `verified`, or `not verified` accurately.
 
-Do not create reports, summaries, analysis files, or extra documentation except where the selected audit mode explicitly requires its exact two report artifacts, or where `setup` explicitly requires `.commandcode/design/brief.md`.
+Do not create reports, summaries, analysis files, or extra documentation except where the selected audit mode explicitly requires its exact two report artifacts, or where `setup` explicitly requires `.design-agent/brief.md`.
 
 When the task is complete, give a concise account of only verified work, affected files, checks run, and any unverified limitations. Do not claim an animation, state, layout change, or accessibility result that was not observed.
 
