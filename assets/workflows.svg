@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">Common Design Partner workflows</title>
+  <desc id="desc">Four workflow diagrams for focused design, audit and repair, autonomous sweep, and new interface creation.</desc>
+  <rect width="1200" height="560" rx="26" fill="#0d1014"/>
+  <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+    <text x="54" y="68" fill="#f6f7f9" font-size="30" font-weight="750" letter-spacing="-1">Choose the loop that matches the work</text>
+    <text x="54" y="100" fill="#949daa" font-size="16">Every path ends in evidence, not a promise.</text>
+
+    <g transform="translate(54 138)">
+      <rect width="532" height="160" rx="18" fill="#151a21" stroke="#303844"/>
+      <text x="24" y="34" fill="#a8ff60" font-size="13" font-weight="750" letter-spacing="2">FOCUSED IMPLEMENTATION</text>
+      <text x="24" y="60" fill="#cbd1d8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">$design responsive …</text>
+      <g transform="translate(24 91)" font-size="13" font-weight="700">
+        <rect width="112" height="42" rx="10" fill="#252c35"/><text x="56" y="27" fill="#f6f7f9" text-anchor="middle">REQUEST</text>
+        <path d="M124 21h38m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>
+        <rect x="174" width="112" height="42" rx="10" fill="#252c35"/><text x="230" y="27" fill="#f6f7f9" text-anchor="middle">IMPLEMENT</text>
+        <path d="M298 21h38m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>
+        <rect x="348" width="112" height="42" rx="10" fill="#a8ff60"/><text x="404" y="27" fill="#0d1014" text-anchor="middle">VERIFY</text>
+      </g>
+    </g>
+
+    <g transform="translate(614 138)">
+      <rect width="532" height="160" rx="18" fill="#151a21" stroke="#303844"/>
+      <text x="24" y="34" fill="#6ec8ff" font-size="13" font-weight="750" letter-spacing="2">AUDIT, THEN REPAIR</text>
+      <text x="24" y="60" fill="#cbd1d8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">$design checkup  →  next turn</text>
+      <g transform="translate(24 91)" font-size="13" font-weight="700">
+        <rect width="102" height="42" rx="10" fill="#252c35"/><text x="51" y="27" fill="#f6f7f9" text-anchor="middle">AUDIT</text>
+        <path d="M114 21h26m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>
+        <rect x="152" width="102" height="42" rx="10" fill="#252c35"/><text x="203" y="27" fill="#f6f7f9" text-anchor="middle">REPORT</text>
+        <path d="M266 21h26m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>
+        <rect x="304" width="102" height="42" rx="10" fill="#252c35"/><text x="355" y="27" fill="#f6f7f9" text-anchor="middle">REPAIR</text>
+        <circle cx="445" cy="21" r="21" fill="#6ec8ff"/><path d="m436 21 6 6 12-14" fill="none" stroke="#0d1014" stroke-width="3"/>
+      </g>
+    </g>
+
+    <g transform="translate(54 326)">
+      <rect width="532" height="180" rx="18" fill="#151a21" stroke="#a8ff60" stroke-opacity=".55"/>
+      <text x="24" y="34" fill="#a8ff60" font-size="13" font-weight="750" letter-spacing="2">AUTONOMOUS SWEEP</text>
+      <text x="24" y="60" fill="#cbd1d8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">$design-auto</text>
+      <g transform="translate(24 88)" font-size="12" font-weight="700">
+        <circle cx="43" cy="34" r="34" fill="#252c35"/><text x="43" y="31" fill="#f6f7f9" text-anchor="middle">SCAN</text><text x="43" y="46" fill="#8f99a6" text-anchor="middle">routes</text>
+        <path d="M81 34h45m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>
+        <circle cx="164" cy="34" r="34" fill="#252c35"/><text x="164" y="31" fill="#f6f7f9" text-anchor="middle">RANK</text><text x="164" y="46" fill="#8f99a6" text-anchor="middle">backlog</text>
+        <path d="M202 34h45m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>
+        <circle cx="285" cy="34" r="34" fill="#252c35"/><text x="285" y="31" fill="#f6f7f9" text-anchor="middle">FIX</text><text x="285" y="46" fill="#8f99a6" text-anchor="middle">3–8 jobs</text>
+        <path d="M323 34h45m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>
+        <circle cx="406" cy="34" r="34" fill="#a8ff60"/><text x="406" y="31" fill="#0d1014" text-anchor="middle">VERIFY</text><text x="406" y="46" fill="#31401f" text-anchor="middle">each job</text>
+        <path d="M406 72c0 34-242 39-242 2" fill="none" stroke="#a8ff60" stroke-opacity=".65" stroke-width="2" stroke-dasharray="5 5"/>
+      </g>
+    </g>
+
+    <g transform="translate(614 326)">
+      <rect width="532" height="180" rx="18" fill="#151a21" stroke="#303844"/>
+      <text x="24" y="34" fill="#ffb86b" font-size="13" font-weight="750" letter-spacing="2">NEW INTERFACE</text>
+      <text x="24" y="60" fill="#cbd1d8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">$design create …</text>
+      <g transform="translate(24 92)" font-size="13" font-weight="700">
+        <rect width="128" height="48" rx="24" fill="#252c35"/><text x="64" y="30" fill="#f6f7f9" text-anchor="middle">CONTEXT</text>
+        <path d="M140 24h35m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>
+        <rect x="187" width="128" height="48" rx="24" fill="#252c35"/><text x="251" y="30" fill="#f6f7f9" text-anchor="middle">CREATE</text>
+        <path d="M327 24h35m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>
+        <rect x="374" width="104" height="48" rx="24" fill="#ffb86b"/><text x="426" y="30" fill="#17110a" text-anchor="middle">TEST</text>
+      </g>
+    </g>
+  </g>
+</svg>

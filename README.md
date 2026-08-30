@@ -1,70 +1,64 @@
-# Design Partner for AI coding agents
+<p align="center">
+  <img src="assets/hero.svg" alt="Design Partner for AI coding agents — inspect, improve, and verify real interfaces" width="100%">
+</p>
 
-A portable design system for AI coding tools that work directly in real repositories.
+<h1 align="center">Design Partner skills for Codex and OpenCode</h1>
 
-This project gives your coding agent two reusable skills:
+<p align="center">
+  Two portable skills for thoughtful interface work in real codebases.<br>
+  Focus one design discipline with <code>$design</code>, or run a thorough multi-job sweep with <code>$design-auto</code>.
+</p>
 
-- **`design`** — focused design work such as audits, accessibility, responsive layout, interaction, typography, color, motion, redesign, and finishing.
-- **`design-auto`** — a hands-off design autopilot that inventories the interface, builds an evidence-backed backlog, completes several jobs sequentially, verifies each result, and reports when it is done.
+## Quick start
 
-The goal is practical: improve the real interface, preserve the product's intent, test what can actually be tested, and never pretend an unobserved result was verified.
+The installer prompt lives in [INSTALL.md](INSTALL.md). These one-line commands fetch it directly and ask the selected CLI to install or update both skills.
 
-## Why use it?
+**Codex CLI**
 
-- Works from the codebase and its existing design language
-- Covers brand sites and product interfaces
-- Treats accessibility, responsive behavior, states, and recovery as core design work
-- Produces structured `checkup`, `review`, and `smell` reports when requested
-- Avoids generic generated-design habits and unearned visual effects
-- Keeps autonomous work bounded by repository instructions and normal safety approvals
-- Runs independently and never reads or writes `.commandcode/`
-
-## Quick start: install or update
-
-Use this same prompt for a first installation or to update a stale installation. Paste it into Codex, Claude Code, Cursor, OpenCode, or another AI coding agent with filesystem access:
-
-```text
-Install or update the two reusable design skills from this repository to its latest available commit:
-https://github.com/administrakt0r/commandcode-design-skills
-
-Do the work yourself and do not ask me routine questions. Treat the repository as the source of truth; do not recreate or summarize its skill instructions.
-
-1. Fetch a fresh copy of the repository into a temporary directory and record the resolved commit SHA. Do not modify the repository I am currently working in.
-2. Detect this AI coding tool's supported global, user-level skill or reusable-workflow directory from its local configuration or documentation. For Codex, prefer $CODEX_HOME/skills when CODEX_HOME is set, otherwise use ~/.codex/skills. For another tool, use its documented equivalent. Do not guess a project-local location if a user-level location exists.
-3. Inspect the existing `design` and `design-auto` destinations if present. Compare them with the fetched commit. If both already match exactly, leave them unchanged and report that they are current.
-4. Assemble clean staging directories on the same filesystem. The staged `design` skill must contain the repository's root `SKILL.md`, `references/`, and `agents/`. The staged `design-auto` skill must contain `design-auto/SKILL.md` and `design-auto/agents/`. Do not copy the nested `design-auto/` directory into the staged `design` skill.
-5. Validate both staged skills before changing an installed copy. Confirm the frontmatter, referenced files, metadata, sibling dependency, and explicit-only invocation policy for `design-auto`.
-6. For each stale or missing destination, create a timestamped backup if it exists, then replace that exact managed skill directory with its validated staging directory. Do not merge old files into the new package because that retains stale references. Do not modify sibling skills or delete the backup.
-7. If this tool has no native skill system, install or update equivalent named reusable workflows or prompts called `design` and `design-auto`. Keep all reference files available and adapt only the invocation metadata and path resolution required by the tool; do not rewrite or summarize the design rules.
-8. Verify the final installed copies against the fetched commit. Confirm every referenced file exists, `design-auto` resolves the sibling `design` skill, neither skill operationally reads or writes `.commandcode/`, and project artifacts are restricted to `.design-agent/`.
-9. Report whether each skill was installed, updated, or already current; include the source commit SHA, exact installed paths, validation performed, invocation syntax, backup paths, and whether a restart or new session is required. Do not claim support you could not verify.
-
-Do not commit, push, publish, deploy, or change system-wide configuration outside the selected user-level skill directory. Clean up only the temporary fetch and staging directories you created after successful verification.
+```bash
+install_prompt="$(curl -fsSL https://raw.githubusercontent.com/administrakt0r/commandcode-design-skills/main/INSTALL.md)" && codex exec "$install_prompt"
 ```
 
-For Codex, start a new session after installation and invoke:
+**OpenCode CLI**
 
-```text
-$design checkup
-$design redesign the settings page
-$design-auto
+```bash
+install_prompt="$(curl -fsSL https://raw.githubusercontent.com/administrakt0r/commandcode-design-skills/main/INSTALL.md)" && opencode run "$install_prompt"
 ```
 
-`design-auto` is explicit-only by design, so it will not silently begin an autonomous sweep during an ordinary design request.
+The prompt handles fresh installs and stale copies. It stages clean packages, validates them, backs up existing versions, replaces managed directories without stale-file merging, and reports the installed commit SHA.
 
-## Ready-to-use workflows
+Both CLIs support the shared user-level location `~/.agents/skills`, so one installation can serve Codex and OpenCode. See the official [Codex skills documentation](https://developers.openai.com/codex/skills/) and [OpenCode skills documentation](https://opencode.ai/docs/skills/). Restart the CLI or open a new session if an updated skill does not appear immediately.
+
+The examples below use Codex's `$skill-name` syntax. In OpenCode, use the same prompts with “the `design` skill” or “the `design-auto` skill”; OpenCode discovers them by name through its native skill tool.
+
+## What you get
+
+| Skill | Best for | Behavior |
+| --- | --- | --- |
+| **`design`** | A named surface, mode, or outcome | Inspects context, edits the real interface, and verifies the focused result |
+| **`design-auto`** | A broad hands-off improvement run | Inventories the product, ranks a backlog, completes several jobs sequentially, then reports once |
+
+Both skills preserve the product's intent, use the repository's existing design language, treat accessibility and responsive behavior as core work, and distinguish rendered evidence from assumptions.
+
+## Common workflows
+
+<p align="center">
+  <img src="assets/workflows.svg" alt="Focused, audit and repair, autonomous sweep, and new-interface workflows" width="100%">
+</p>
 
 ### Thorough autonomous sweep
 
-Use this when you want the agent to scan broadly, build its own backlog, and complete several improvements without routine interaction:
+Use this when you want the agent to discover and complete the work without routine interaction:
 
 ```text
 Use $design-auto to thoroughly inspect this repository and improve the interface. Work through several evidence-backed jobs sequentially, verify each one, and report only when the sweep is complete.
 ```
 
+`design-auto` inventories representative routes, templates, states, viewports, keyboard behavior, and supported themes. It builds a backlog before editing, normally completes at least 3 jobs, targets 5, and caps a run at 8. Audits, documentation, formatting, and verification commands do not count as implementation jobs.
+
 ### Focused implementation
 
-Name the surface and outcome. The skill selects the appropriate design mode:
+Name the surface and desired outcome; `design` selects the relevant discipline:
 
 ```text
 Use $design to make the account settings page clearer, more responsive, and easier to complete with a keyboard. Edit the real implementation and verify the result.
@@ -72,7 +66,7 @@ Use $design to make the account settings page clearer, more responsive, and easi
 
 ### Audit, then repair
 
-Run each prompt as a separate turn because audit modes intentionally create reports without changing the interface:
+Audit modes intentionally report without modifying the interface. Use two turns:
 
 ```text
 Use $design checkup to audit the interface. Create only the required report artifacts.
@@ -84,15 +78,13 @@ Use $design to fix the highest-impact evidence-backed findings from the latest d
 
 ### Establish project design context
 
-Use once when a repository needs durable product, audience, voice, and visual-direction context:
-
 ```text
 Use $design setup to inspect this repository and create or update its design brief.
 ```
 
 ### Create a new interface
 
-Give the agent a concrete product, audience, and primary task instead of asking for a generic page:
+Give the agent a real product, audience, and primary task:
 
 ```text
 Use $design create to build a responsive appointment-booking interface for a neighborhood clinic. Patients must be able to choose a service, practitioner, date, and available time, then review their selection before confirming.
@@ -100,17 +92,23 @@ Use $design create to build a responsive appointment-booking interface for a nei
 
 ### Pre-release finish
 
-Use after functionality is complete:
-
 ```text
 Use $design finish to inspect the completed interface, correct safe release-blocking design issues, and verify accessibility, responsive behavior, states, and visual consistency without changing product scope.
 ```
 
+## Design modes
+
+`design` understands natural-language requests and named modes:
+
+`checkup` · `smell` · `review` · `deslop` · `typeset` · `recolor` · `motion` · `interaction` · `a11y` · `relayout` · `responsive` · `redesign` · `tokenize` · `setup` · `finish` · `refine` · `voice` · `surface` · `create`
+
+Audit modes create their exact reports only. Implementation modes change real files and verify the result as far as the available tools allow.
+
 ## Independent runtime
 
-These skills do not require Command Code and do not use its project files. They ignore `.commandcode/` completely, even when that directory already exists.
+This project is a standalone adaptation. The installed skills do not require Command Code, read its project state, or write to `.commandcode/`. They ignore that directory even when it exists.
 
-Their own optional project memory and audit artifacts live only under `.design-agent/`:
+Their own optional project context and audit artifacts live exclusively under `.design-agent/`:
 
 ```text
 .design-agent/
@@ -124,46 +122,31 @@ Their own optional project memory and audit artifacts live only under `.design-a
 └── smell-report.html
 ```
 
-## What `design` can do
-
-The skill routes natural-language requests or named modes including:
-
-`checkup`, `smell`, `review`, `deslop`, `typeset`, `recolor`, `motion`, `interaction`, `a11y`, `relayout`, `responsive`, `redesign`, `tokenize`, `setup`, `finish`, `refine`, `voice`, `surface`, and `create`.
-
-Audit modes report only. Implementation modes change real files and verify the result as far as the available tools allow.
-
-## How `design-auto` works
-
-On each invocation it:
-
-1. Inventories representative routes, templates, states, viewports, and input modes.
-2. Establishes or refreshes design audit evidence without treating reports as implementation work.
-3. Builds and ranks a concrete backlog before choosing the first easy fix.
-4. Runs one design mode at a time and verifies each user-visible job.
-5. Completes at least 3 jobs in a normal run, targets 5, and caps the run at 8.
-6. Returns one concise completion report with coverage, completed jobs, verification, and remaining work.
-
-It does not invent work merely to reach a count, and it does not bypass credentials, approvals, destructive-action safeguards, production boundaries, or missing product decisions. An unusually clean or blocked project may finish below 3 jobs only after the full coverage matrix is inspected and the reason is reported.
+The skills never commit, push, deploy, publish, access production, install remote services, or alter secrets as part of ordinary design autonomy.
 
 ## Repository layout
 
 ```text
 .
-├── SKILL.md                 # design skill entrypoint
+├── SKILL.md                 # focused design skill
 ├── agents/openai.yaml       # Codex-facing metadata
-├── references/              # mode-specific design guidance
+├── references/              # mode-specific guidance
 ├── design-auto/
 │   ├── SKILL.md             # autonomous orchestrator
-│   └── agents/openai.yaml   # explicit-only invocation metadata
-└── PROMPT.md                # portable fallback for tools without skills
+│   └── agents/openai.yaml   # explicit-only metadata
+├── INSTALL.md               # authoritative install/update prompt
+├── PROMPT.md                # fallback for tools without skills
+└── assets/                  # README visuals
 ```
 
-The diagnostic report HTML template is only for generated audit reports. It is not a product UI starter or visual style recommendation.
+If an agent cannot install skills, use [PROMPT.md](PROMPT.md) as a turn-level instruction and keep it beside `SKILL.md` and `references/`.
 
-## Portable fallback
+## Credits
 
-If an agent cannot install skills, use [PROMPT.md](PROMPT.md) as a turn-level instruction and keep it beside `SKILL.md` and `references/`. The fallback contains no machine-specific absolute path.
+The design philosophy, modes, and original workflow in this project were adapted from the **[Command Code](https://commandcode.ai/)** CLI by [CommandCodeAI](https://github.com/CommandCodeAI). Thank you to the Command Code team for the original design-agent work.
+
+This repository is an independent, portable adaptation for agent-skill ecosystems. It is not affiliated with or endorsed by Command Code, and it intentionally has no Command Code runtime dependency.
 
 ## Repository
 
-Published at [administrakt0r/commandcode-design-skills](https://github.com/administrakt0r/commandcode-design-skills).
+[github.com/administrakt0r/commandcode-design-skills](https://github.com/administrakt0r/commandcode-design-skills)
