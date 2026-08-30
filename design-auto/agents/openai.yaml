@@ -1,0 +1,6 @@
+interface:
+  display_name: "Design Autopilot"
+  short_description: "Autonomous one-job-at-a-time design repair"
+  default_prompt: "Use $design-auto to autonomously inspect and improve this repository one design job at a time."
+policy:
+  allow_implicit_invocation: false
