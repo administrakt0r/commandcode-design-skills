@@ -1,4 +1,4 @@
 interface:
   display_name: "Design Partner"
-  short_description: "Design, audit, and refine interfaces"
-  default_prompt: "Use $design to inspect this repository and improve its interface."
+  short_description: "Scan, report, review, and autonomously improve interfaces"
+  default_prompt: "Use $design to scan this repository, audit the interface, and improve it autonomously: build the reports, work the evidence-backed fixes, verify each one, and report once when done."

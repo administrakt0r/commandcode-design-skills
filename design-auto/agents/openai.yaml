@@ -1,6 +1,0 @@
-interface:
-  display_name: "Design Autopilot"
-  short_description: "Thorough multi-job autonomous design sweep"
-  default_prompt: "Use $design-auto to scan this repository thoroughly and complete several verified interface improvements sequentially."
-policy:
-  allow_implicit_invocation: false

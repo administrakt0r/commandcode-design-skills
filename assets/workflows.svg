@@ -22,7 +22,7 @@
     <g transform="translate(614 138)">
       <rect width="532" height="160" rx="18" fill="#151a21" stroke="#303844"/>
       <text x="24" y="34" fill="#6ec8ff" font-size="13" font-weight="750" letter-spacing="2">AUDIT, THEN REPAIR</text>
-      <text x="24" y="60" fill="#cbd1d8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">$design checkup  →  next turn</text>
+      <text x="24" y="60" fill="#cbd1d8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">$design checkup  →  same run</text>
       <g transform="translate(24 91)" font-size="13" font-weight="700">
         <rect width="102" height="42" rx="10" fill="#252c35"/><text x="51" y="27" fill="#f6f7f9" text-anchor="middle">AUDIT</text>
         <path d="M114 21h26m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>
@@ -36,7 +36,7 @@
     <g transform="translate(54 326)">
       <rect width="532" height="180" rx="18" fill="#151a21" stroke="#a8ff60" stroke-opacity=".55"/>
       <text x="24" y="34" fill="#a8ff60" font-size="13" font-weight="750" letter-spacing="2">AUTONOMOUS SWEEP</text>
-      <text x="24" y="60" fill="#cbd1d8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">$design-auto</text>
+      <text x="24" y="60" fill="#cbd1d8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">$design</text>
       <g transform="translate(24 88)" font-size="12" font-weight="700">
         <circle cx="43" cy="34" r="34" fill="#252c35"/><text x="43" y="31" fill="#f6f7f9" text-anchor="middle">SCAN</text><text x="43" y="46" fill="#8f99a6" text-anchor="middle">routes</text>
         <path d="M81 34h45m-8-7 8 7-8 7" fill="none" stroke="#717b88" stroke-width="2"/>

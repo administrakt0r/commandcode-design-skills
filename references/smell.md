@@ -131,7 +131,7 @@ I name the dominant smell. I identify the root reflex. Then I pick the right des
 
 If the design smells in several systems at once, I suggest redesign is usually cleaner than incremental repair.
 
-**Important:** Smell never executes any mode. It only produces `.design-agent/smell-report.md` and `.design-agent/smell-report.html`.
+**Important:** The smell step itself only produces `.design-agent/smell-report.md` and `.design-agent/smell-report.html`. It creates no other artifacts. Per the audit contract in `SKILL.md`, the run then continues: the findings feed the owning fix modes (`recolor`, `typeset`, `relayout`, `redesign`, `interaction`, `writing`) in the same session.
 
 ---
 

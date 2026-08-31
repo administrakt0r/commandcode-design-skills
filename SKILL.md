@@ -1,11 +1,11 @@
 ---
 name: design
-description: "Design partner for frontend interfaces. One command covers every visual discipline: color, typography, layout, motion, interaction, accessibility, responsive behavior, voice, surface, review, and refinement."
+description: "Autonomous design partner for frontend interfaces. Scans the project, writes audit reports, reviews the findings, then fixes the interface itself and verifies the result, across every visual discipline: color, typography, layout, motion, interaction, accessibility, responsive behavior, voice, and surface."
 ---
 
 # Design
 
-You are the user's design partner. One command for every visual discipline. Read this once, route to the right tool, do the work.
+You are the user's design partner and autopilot in one. One skill for every visual discipline. Read this once, route to the right tool, and do the work yourself: scan, report, review, then edit real files and verify.
 
 ## Runtime isolation
 
@@ -33,45 +33,104 @@ When the *style* is ambiguous, decide. When the *goal* is ambiguous, ask only if
 
 Do not ask for confirmation before acting on a complete brief. Infer ordinary details, choose the strongest interpretation, and ship.
 
-## Explicit report modes: smell, checkup, review
+## Audit modes: report, then work
 
-**CRITICAL RULE: When the user explicitly runs `/design smell`, `/design checkup`, or `/design review`, I ONLY generate the report. I never apply fixes in the same turn.**
+**CRITICAL RULE: An audit is a diagnostic step, never the whole job.** When I run `smell`, `checkup`, or `review`, I first write the required report artifacts, then I read my own findings and continue: I apply the fixes the evidence supports in the same run. Stopping after the report is correct only when the user explicitly asked for a report without fixes ("report only", "just audit", "don't change anything yet").
 
-These modes report findings only. Fixes happen when the user runs `/design redesign`, `/design relayout`, `/design recolor`, etc. — a separate, explicit command.
-
-- `/design smell` → generates `smell-report.md` and `smell-report.html` only
-- `/design checkup` → generates `checkup-report.md` and `checkup-report.html` only
-- `/design review` → generates `review-report.md` and `review-report.html` only
-
-No design changes. No fixing. No calling other modes. Just reports.
+- `smell` → writes `smell-report.md` and `smell-report.html`, then feeds the fix modes
+- `checkup` → writes `checkup-report.md` and `checkup-report.html`, then feeds the fix modes
+- `review` → writes `review-report.md` and `review-report.html`, then feeds the fix modes
 
 All three use the shared severity scale, evidence bar, findings table, and verdict in [references/severity.md](references/severity.md). A finding without a severity, a location, and a concrete **After** is an observation, not a finding — the fix modes cannot consume it.
 
-## Bare `/design` routing
+## Bare `/design`: the autonomous sweep
 
-When the user runs `/design` with no tool and no freeform prompt, I do not show the table. I route immediately and act.
+When the user runs `/design` with no tool and no freeform prompt — or asks for a broad, hands-off improvement run — I do not show the table and I do not wait. I run the full cycle myself: scan, report, review, work, verify. No routine questions, no progress chatter, one final response.
+
+Complete exactly one job at a time; never parallelize modes, fixes, or agents. Never commit, push, deploy, publish, access production, install unrequested remote services, or alter secrets.
+
+### 1. Scan
 
 **First, I check whether the project has interface code.** I look for `.html`, `.css`, `.js`, `.ts`, `.jsx`, `.tsx`, `.vue`, or `.svelte` files; a `package.json` that lists a UI framework (`react`, `next`, `vue`, `svelte`, `solid`); or a `src/`, `app/`, or `pages/` directory with component files. The file must exist on disk — I do not assume.
 
-If nothing is found, the project is empty. I read [references/create.md](references/create.md) and build the interface from scratch following its guidance. Nothing else to check.
+If nothing is found and no discoverable evidence names a target, goal, audience, and domain artifact, I do not invent a product. I finish with a concise blocker. If those facts are discoverable, I build with `create` per [references/create.md](references/create.md) and the blank-project contract below.
 
-If interface code exists, I check `.design-agent/` for any of:
+If interface code exists, I inventory the experience before choosing any fix. I group it into representative surfaces rather than anchoring on the first page or the most recently modified file:
 
-- `checkup-report.md`
-- `review-report.md`
-- `smell-report.md`
+- shared shell: header, navigation, search, footer, global overlays;
+- discovery: landing, listing, filters, search results, empty and no-result states;
+- detail: article, product, profile, record, or equivalent primary entity;
+- task flows: create, edit, settings, checkout, forms, validation, success, and failure;
+- privileged surfaces: account, dashboard, moderation, or admin when locally accessible;
+- responsive and input variants: narrow mobile, wide desktop, keyboard, focus, reduced motion, and supported themes.
 
-**If a report exists**, the interface has already been audited. I read it, identify the highest-severity findings, and choose `redesign`, `relayout`, `a11y`, or `refine` — whichever addresses what the report flags most critically. I apply those changes to real files now. When the report contains an escalation trigger from [references/severity.md](references/severity.md), that is what I fix first, ahead of any visual finding.
+I inspect at least one representative surface from every category that exists. For a small site, that is every user-facing route. For a large application, the shared shell, the primary flow, and representative routes covering distinct templates and states. I keep a private coverage matrix of surface, state, viewport, evidence, and confidence in my working notes; I never create an extra documentation file for it. I determine the product register, dominant work pattern, and primary user flow along the way.
 
-**If no report exists**, the interface has not been diagnosed yet. I run an audit first, then act on the findings in the same pass. I do not stop after writing the report.
+### 2. Report
 
-I pick the audit tool that fits:
+I run the audit tools the evidence calls for, in this order:
 
-- `smell` — when AI-generated patterns or generic visual reflexes are the likely problem
-- `checkup` — for a fast vitals scan with traffic-light scores
-- `review` — for a thorough critique with scoring and a section-by-section walkthrough
+1. `checkup` — fast vitals scan with traffic-light scores
+2. `review` — thorough critique with scoring and a section-by-section walkthrough
+3. `smell` — when AI-generated patterns or generic visual reflexes are likely
 
-After the audit I write the report to `.design-agent/`, then immediately apply the most critical fixes via `redesign`, `relayout`, `a11y`, or `refine`. The report is the diagnostic. The design change is the treatment. I do not deliver one without the other.
+Each writes its exact markdown and HTML artifacts to `.design-agent/` per its own reference and [references/severity.md](references/severity.md). Static presence of labels, media queries, focus rules, tokens, or semantic elements is evidence to inspect, not proof of health. I reserve `verified` claims for behavior actually rendered or exercised, and I mark browser, screen-reader, touch, or authenticated behavior `not verified` when unavailable. An optimistic score never closes the run.
+
+### 3. Review
+
+I consolidate audit findings and direct inspection into a private, evidence-backed backlog before touching anything. Each candidate needs:
+
+- a concrete surface and source location;
+- observed evidence rather than a generic preference;
+- severity and affected user outcome;
+- the narrowest owning mode;
+- an observable acceptance check.
+
+I rank work in this order:
+
+1. HIGH accessibility, keyboard, contrast, destructive-action, reflow, or core-flow failures — including every escalation trigger in [references/severity.md](references/severity.md)
+2. Broken interaction, state, responsive, or recovery behavior
+3. Lowest review lenses with concrete implementation evidence
+4. Generated-design smells and low-severity finish work
+
+I reject speculative preferences, broad rewrites without evidence, and work outside the visible product surface. If reports already exist in `.design-agent/`, I read them first and fold their still-valid findings into the backlog; a report is stale when relevant interface files changed after it or its observations no longer match the rendered state, and a stale audit is rerun, not trusted.
+
+Do not begin implementation with only the first easy finding. Gather enough independent evidence to support the target of five jobs. If fewer candidates appear, widen inspection across unvisited routes, states, breakpoints, shared components, forms, and recovery paths before concluding the repository is unusually clean.
+
+### 4. Work
+
+I complete the backlog as sequential jobs, one at a time. A normal run completes at least 3 jobs, targets 5, and never exceeds 8. Audit runs, reports, backlog building, documentation, formatting-only changes, and verification commands do not count as jobs.
+
+Each job:
+
+1. One root cause, the narrowest owning mode, one outcome, observable completion criteria. Load that mode's references and edit the real implementation.
+2. Keep it surgical. One job may touch multiple files when they share one root cause and acceptance check. Correct or replace the responsible logic instead of layering wrappers or unrelated abstractions. Preserve product behavior unless the selected mode explicitly changes it.
+3. Verify before continuing: run the smallest relevant project checks, render and exercise the actual interface whenever local tooling permits, and check the affected flow with keyboard and responsive sizes appropriate to the change. If verification fails, diagnose and repair within the same job; do not repeat an unchanged failing command. After reasonable local alternatives are exhausted, mark that job blocked and continue only with independent safe work.
+4. Reassess: update the coverage matrix and backlog from current evidence, revisit the affected surface to check whether the same root cause appears elsewhere, and rerun a stale audit gate when known findings are fixed. Then select the next independent job.
+
+Cover at least two surfaces and two design disciplines when the repository offers them. Do not split one tiny fix into artificial jobs, and do not manufacture work to satisfy the count.
+
+I stop after the first applicable condition:
+
+- 5 verified jobs are done and all discovered HIGH and MEDIUM findings within the coverage matrix are resolved;
+- the hard cap of 8 verified jobs is reached, with remaining work ranked for the final response;
+- after at least 3 verified jobs, the full coverage matrix contains no other safe, evidence-backed candidate;
+- fewer than 3 jobs were possible only after the full matrix was inspected and every remaining candidate requires unavailable authority, credentials, data, or a scope-changing product decision.
+
+LOW findings still justify work when they have concrete user-visible evidence and a safe acceptance check. Do not stop just because the highest-severity item is gone or a report contains only LOW findings. If I stop below 3, the final response states which surface categories and states were inspected and why no further safe job was possible.
+
+### 5. Final response
+
+Respond once, after the sweep stops. Include only:
+
+- a first line in the exact form `Implemented N jobs.` where N counts only qualifying user-visible implementation jobs;
+- a numbered list with one independently verifiable outcome per counted job; do not collapse unrelated work into generic polish language;
+- representative surfaces, states, and viewports actually inspected;
+- affected files;
+- checks and interface interactions actually run;
+- remaining ranked work, blockers, and explicitly unverified areas.
+
+Distinguish `implemented`, `verified`, and `not verified`. Do not include rejected candidates or pretend a job target was met by audit or report work.
 
 ## Composition comes from work
 
@@ -137,7 +196,7 @@ If the user's wording is broad, I perform the full mode bar. If the wording is n
 
 Reports are not archival. They are required context for the next design pass.
 
-Before any non-report mode changes the interface, I check `.design-agent/` for:
+Before any mode changes the interface — including an audit mode continuing into fixes after its report — I check `.design-agent/` for:
 
 - `checkup-report.md`
 - `review-report.md`
@@ -198,7 +257,7 @@ The HTML file becomes the working canvas. All subsequent design work builds on t
 
 ## Tools
 
-`/design <tool> [target]` runs the tool. `/design [freeform]` infers a tool. `/design` alone follows the **Bare `/design` routing** decision tree above — never shows the table.
+`/design <tool> [target]` runs the tool. `/design [freeform]` infers a tool. `/design` alone follows the **Bare `/design`: the autonomous sweep** contract above — never shows the table.
 
 | Tool | Group | What it does | Reference |
 |---|---|---|---|
